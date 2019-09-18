@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "ff0b4995-7b17-4586-92b4-86ee9edc54b8",
+		"name": "play",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/v1/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"TitleTest2\",\n\t\"body\" : \"BodyTest\"\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/v1/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/v1/posts/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"posts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"2\",\n    \"link\": \"http://localhost:9000/v1/posts/3\",\n    \"title\": \"TitleTest4\",\n    \"body\": \"BodyTest\"\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/v1/posts/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"posts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/v1/posts/search?title=TitleTest4",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"posts",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "TitleTest4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
