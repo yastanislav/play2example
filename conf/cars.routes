@@ -1,0 +1,5 @@
+GET    /                     v1.car.CarController.list(request:Request)
+POST   /                     v1.car.CarController.create(request:Request)
+
+GET    /:id                  v1.car.CarController.show(request:Request,id)
+PUT    /:id                  v1.car.CarController.update(request:Request,id)

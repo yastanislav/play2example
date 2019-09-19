@@ -1,4 +1,4 @@
-package v1.post.entity;
+package v1.car.entity;
 
 public class Car {
 

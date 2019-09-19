@@ -3,7 +3,11 @@ package v1.post;
 import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.Json;
 import play.libs.concurrent.HttpExecutionContext;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Http;
+import play.mvc.Result;
+import play.mvc.Results;
+import play.mvc.With;
 import v1.post.model.PostResource;
 
 import javax.inject.Inject;
@@ -14,7 +18,6 @@ import java.util.stream.Collectors;
 @With(PostAction.class)
 public class PostController extends Controller {
 
-
     private HttpExecutionContext ec;
     private PostResourceHandler handler;
 
@@ -22,12 +25,6 @@ public class PostController extends Controller {
     public PostController(HttpExecutionContext ec, PostResourceHandler handler) {
         this.ec = ec;
         this.handler = handler;
-    }
-
-    public CompletionStage<Result> findByTitle(Http.Request request) {
-        String title = request.getQueryString("title");
-        System.out.println("findByTitle title = "+title);
-        return handler.findByTitle(request, title).thenApplyAsync(posts -> ok(Json.toJson(posts)), ec.current());
     }
 
     public CompletionStage<Result> list(Http.Request request) {

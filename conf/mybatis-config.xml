@@ -15,8 +15,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="v1.post.model.CarDataMapper" />
-        <mapper class="v1.post.model.BrandDataMapper" />
-        <mapper class="v1.post.model.ModelDataMapper" />
+        <mapper class="v1.car.entity.CarDataMapper" />
+        <mapper class="v1.car.entity.BrandDataMapper" />
+        <mapper class="v1.car.entity.ModelDataMapper" />
     </mappers>
 </configuration>

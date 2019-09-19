@@ -1,4 +1,4 @@
-package v1.post.entity;
+package v1.car.entity;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;

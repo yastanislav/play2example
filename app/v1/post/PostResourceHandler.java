@@ -1,7 +1,6 @@
 package v1.post;
 
 import com.palominolabs.http.url.UrlBuilder;
-import org.apache.ibatis.session.SqlSession;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Http;
 import v1.post.entity.PostData;
@@ -10,13 +9,10 @@ import v1.post.model.Response;
 
 import javax.inject.Inject;
 import java.nio.charset.CharacterCodingException;
-import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Stream;
-
-import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 /**
  * Handles presentation of Post resources, which map to JSON.
@@ -30,13 +26,6 @@ public class PostResourceHandler {
     public PostResourceHandler(PostRepository repository, HttpExecutionContext ec) {
         this.repository = repository;
         this.ec = ec;
-    }
-
-    public CompletionStage<List<PostData>> findByTitle(Http.Request request, String title) {
-        SqlSession s = MyBatisUtil.getSqlSessionFactory().openSession(true);
-        System.out.println("session =" + s);
-        CarDataMapper mapper = s.getMapper(CarDataMapper.class);
-        return supplyAsync(() -> (mapper.findByTitle(title)));
     }
 
     public CompletionStage<Stream<PostResource>> find(Http.Request request) {
