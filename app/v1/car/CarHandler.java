@@ -1,13 +1,15 @@
 package v1.car;
 
 import play.libs.concurrent.HttpExecutionContext;
-import play.mvc.Http;
+import v1.car.entity.Car;
 import v1.car.model.CreateCarRequest;
-import v1.post.entity.PostData;
-import v1.post.model.PostResource;
+import v1.car.model.CreateCarResponse;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
+
+import static v1.car.model.CarResponse.FAIL;
+import static v1.car.model.CarResponse.SUCCESS;
 
 public class CarHandler {
 
@@ -20,18 +22,14 @@ public class CarHandler {
         this.ec = ec;
     }
 
-    public CompletionStage<PostResource> create(Http.Request request, CreateCarRequest resource) {
-        System.out.println("CarHandler.create" + request.toString());
-        final PostData data = new PostData(resource.getTitle(), resource.getBody());
-        return repository.create(data).thenApplyAsync(
-                savedData -> new PostResource(savedData, link(request, savedData)), ec.current());
+    public CompletionStage<CreateCarResponse> create(CreateCarRequest createCarRequest) {
+        System.out.println("CarHandler.create");
+        Car inputCar = new Car(createCarRequest);
+        return repository.create(inputCar).thenApplyAsync(
+                outputCar -> {
+                    String status = (outputCar.getId() != null) ? SUCCESS : FAIL;
+                    return new CreateCarResponse(outputCar.getId(), status);
+                }, ec.current());
     }
-
-//    public CompletionStage<List<PostData>> findByTitle(Http.Request request, String title) {
-//        SqlSession s = MyBatisUtil.getSqlSessionFactory().openSession(true);
-//        System.out.println("session =" + s);
-//        CarDataMapper mapper = s.getMapper(CarDataMapper.class);
-//        return supplyAsync(() -> (mapper.findByTitle(title)));
-//    }
 
 }

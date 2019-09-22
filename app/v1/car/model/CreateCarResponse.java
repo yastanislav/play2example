@@ -1,16 +1,19 @@
 package v1.car.model;
 
-import v1.car.entity.Car;
-
 public class CreateCarResponse extends CarResponse {
 
-    private Car car;
+    private Long id;
 
-    public Car getCar() {
-        return car;
+    public CreateCarResponse(Long id, String status) {
+        this.id = id;
+        this.setStatus(status);
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

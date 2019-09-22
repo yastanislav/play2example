@@ -1,12 +1,21 @@
 package v1.car.entity;
 
+import v1.car.model.CreateCarRequest;
+
 public class Car {
 
     private Long id;
-    private Brand title;
-    private Model model;
+    private Long brandId;
+    private Long modelId;
     private Integer yearProd;
     private String cost;
+
+    public Car(CreateCarRequest createCarRequest) {
+        this.brandId = createCarRequest.getBrandId();
+        this.modelId = createCarRequest.getModelId();
+        this.yearProd = createCarRequest.getYearProd();
+        this.cost = createCarRequest.getCost();
+    }
 
     public Long getId() {
         return id;
@@ -16,20 +25,20 @@ public class Car {
         this.id = id;
     }
 
-    public Brand getTitle() {
-        return title;
+    public Long getBrandId() {
+        return brandId;
     }
 
-    public void setTitle(Brand title) {
-        this.title = title;
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 
-    public Model getModel() {
-        return model;
+    public Long getModelId() {
+        return modelId;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setModelId(Long modelId) {
+        this.modelId = modelId;
     }
 
     public Integer getYearProd() {
