@@ -8,6 +8,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import v1.car.model.CreateCarRequest;
 
+import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 
 public class CarController extends Controller {
@@ -15,7 +16,7 @@ public class CarController extends Controller {
     private HttpExecutionContext ec;
     private CarHandler handler;
 
-//    @Inject
+    @Inject
     public CarController(HttpExecutionContext ec, CarHandler handler) {
         this.ec = ec;
         this.handler = handler;

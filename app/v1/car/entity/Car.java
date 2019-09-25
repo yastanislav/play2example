@@ -56,4 +56,14 @@ public class Car {
     public void setCost(String cost) {
         this.cost = cost;
     }
+
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brandId=" + brandId +
+                ", modelId=" + modelId +
+                ", yearProd=" + yearProd +
+                ", cost='" + cost + '\'' +
+                '}';
+    }
 }

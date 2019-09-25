@@ -1,9 +1,16 @@
 package v1.car.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CreateCarRequest {
 
+    @JsonProperty("brand_id")
     private Long brandId;
+
+    @JsonProperty("model_id")
     private Long modelId;
+
+    @JsonProperty("year_prod")
     private Integer yearProd;
     private String cost;
 

@@ -22,11 +22,19 @@ public class CarHandler {
         this.ec = ec;
     }
 
+//public CompletionStage<List<PostData>> findByTitle(Http.Request request, String title) {
+//        SqlSession s = MyBatisUtil.getSqlSessionFactory().openSession(true);
+//        System.out.println("session =" + s);
+//        CarDataMapper mapper = s.getMapper(CarDataMapper.class);
+//        return supplyAsync(() -> (mapper.findByTitle(title)));
+//    }
+
     public CompletionStage<CreateCarResponse> create(CreateCarRequest createCarRequest) {
         System.out.println("CarHandler.create");
         Car inputCar = new Car(createCarRequest);
         return repository.create(inputCar).thenApplyAsync(
                 outputCar -> {
+                    System.out.println("outputCar="+outputCar);
                     String status = (outputCar.getId() != null) ? SUCCESS : FAIL;
                     return new CreateCarResponse(outputCar.getId(), status);
                 }, ec.current());
