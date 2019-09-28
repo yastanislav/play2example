@@ -10,6 +10,9 @@ public class Car {
     private Integer yearProd;
     private String cost;
 
+    public Car() {
+    }
+
     public Car(CreateCarRequest createCarRequest) {
         this.brandId = createCarRequest.getBrandId();
         this.modelId = createCarRequest.getModelId();

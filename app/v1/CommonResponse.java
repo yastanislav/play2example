@@ -1,6 +1,6 @@
-package v1.car.model;
+package v1;
 
-public class CarResponse {
+public class CommonResponse {
 
     public static final String FAIL="FAIL";
     public static final String SUCCESS="SUCCESS";

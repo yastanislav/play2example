@@ -17,6 +17,6 @@
     <mappers>
         <mapper class="v1.car.entity.CarDataMapper" />
         <mapper class="v1.car.entity.BrandDataMapper" />
-        <mapper class="v1.car.entity.ModelDataMapper" />
+        <mapper class="v1.model.entity.ModelDataMapper" />
     </mappers>
 </configuration>

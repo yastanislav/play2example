@@ -1,14 +1,14 @@
-package v1.car.model;
+package v1.model.model;
 
 import v1.CommonResponse;
 
-public class CreateCarResponse extends CommonResponse {
+public class CreateModelResponse extends CommonResponse {
 
     private Long id;
 
-    public CreateCarResponse(Long id, String status) {
+    public CreateModelResponse(Long id, String status) {
         this.id = id;
-        this.setStatus(status);
+        setStatus(status);
     }
 
     public Long getId() {

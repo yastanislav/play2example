@@ -2,12 +2,15 @@ package v1.car;
 
 import org.apache.ibatis.session.SqlSession;
 import play.db.jpa.JPAApi;
+import v1.MyBatisUtil;
 import v1.car.entity.Car;
 import v1.car.entity.CarDataMapper;
+import v1.car.entity.CarExt;
 import v1.post.PostExecutionContext;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;
@@ -23,14 +26,17 @@ public class CarRepositoryImpl implements CarRepository {
 //        this.ec = ec;
     }
 
-    public CompletionStage<Stream<Car>> list() {
-        return null;
+    public CompletionStage<Stream<CarExt>> list() {
+        System.out.println("CarRepositoryImpl.list");
+        SqlSession s = MyBatisUtil.getSqlSessionFactory().openSession(true);
+        CarDataMapper mapper = s.getMapper(CarDataMapper.class);
+        List<CarExt> listCar = mapper.list();
+        return supplyAsync(listCar::stream);
     }
 
     public CompletionStage<Car> create(Car car) {
         System.out.println("CarRepositoryImpl.create " + car);
         SqlSession s = MyBatisUtil.getSqlSessionFactory().openSession(true);
-        System.out.println("session =" + s);
         CarDataMapper mapper = s.getMapper(CarDataMapper.class);
         mapper.create(car);
         return supplyAsync(() -> car);

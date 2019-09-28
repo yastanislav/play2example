@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "get list",
+			"name": "posts: get list",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -25,7 +25,7 @@
 			"response": []
 		},
 		{
-			"name": "create",
+			"name": "posts: create",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -37,7 +37,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"title\" : \"TitleTest2\",\n\t\"body\" : \"BodyTest\"\n}"
+					"raw": "{\n\t\"title\" : \"TitleTest4\",\n\t\"body\" : \"BodyTest\"\n}"
 				},
 				"url": {
 					"raw": "localhost:9000/v1/posts",
@@ -54,7 +54,7 @@
 			"response": []
 		},
 		{
-			"name": "get item",
+			"name": "posts: get item",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -74,16 +74,22 @@
 			"response": []
 		},
 		{
-			"name": "update item",
+			"name": "posts: update item",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"2\",\n    \"link\": \"http://localhost:9000/v1/posts/3\",\n    \"title\": \"TitleTest4\",\n    \"body\": \"BodyTest\"\n}"
+					"raw": "{\n    \"title\": \"TitleTest4+\",\n    \"body\": \"BodyTest\"\n}"
 				},
 				"url": {
-					"raw": "localhost:9000/v1/posts/2",
+					"raw": "localhost:9000/v1/posts/4",
 					"host": [
 						"localhost"
 					],
@@ -91,7 +97,7 @@
 					"path": [
 						"v1",
 						"posts",
-						"2"
+						"4"
 					]
 				}
 			},
@@ -118,6 +124,54 @@
 							"key": "title",
 							"value": "TitleTest4"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars: create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"brand_id\": 1,\n\t\"model_id\": 1,\n\t\"year_prod\": 1998,\n\t\"cost\": \"200000\"\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/v1/cars",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars: list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/v1/cars",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"cars"
 					]
 				}
 			},

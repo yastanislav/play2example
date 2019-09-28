@@ -1,1 +1,2 @@
 POST   /                     v1.car.CarController.create(request:Request)
+GET    /                     v1.car.CarController.list(request:Request)

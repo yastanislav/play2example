@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import v1.car.CarRepository;
 import v1.car.CarRepositoryImpl;
+import v1.model.ModelRepository;
+import v1.model.ModelRepositoryImpl;
 import v1.post.JPAPostRepository;
 import v1.post.PostRepository;
 
@@ -29,6 +31,7 @@ public class Module extends AbstractModule {
         bind(MetricRegistry.class).toProvider(MetricRegistryProvider.class).asEagerSingleton();
         bind(PostRepository.class).to(JPAPostRepository.class).asEagerSingleton();
         bind(CarRepository.class).to(CarRepositoryImpl.class).asEagerSingleton();
+        bind(ModelRepository.class).to(ModelRepositoryImpl.class).asEagerSingleton();
     }
 }
 

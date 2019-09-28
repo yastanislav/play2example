@@ -1,19 +1,16 @@
-package v1.car.entity;
+package v1.model.model;
 
-public class Model {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    private Long id;
+public class CreateModelRequest {
+
     private String title;
+
+    @JsonProperty("year_prod_start")
     private Integer yearProdStart;
+
+    @JsonProperty("year_prod_end")
     private Integer yearProdEnd;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
