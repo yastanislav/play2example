@@ -8,9 +8,9 @@ import org.apache.ibatis.annotations.Select;
 
 public interface ModelDataMapper {
 
-    @Select("select id, title, year_prod_start, year_prod_end from model where id=#{id}")
+    @Select({"select id, title, year_prod_start, year_prod_end from model where id=#{id}"})
     @Results(value = {
-            @Result(property = "id", column = "id"),
+            @Result(property = "id", column = "id", id = true),
             @Result(property = "title", column = "title"),
             @Result(property = "yearProdStart", column = "year_prod_start"),
             @Result(property = "yearProdEnd", column = "year_prod_end"),

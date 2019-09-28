@@ -29,7 +29,7 @@
 
   <logger name="akka" level="INFO" />
   <logger name="akka" level="INFO" />
-
+  <logger name="org.mybatis.example.BlogMapper" level="INFO" />
 
   <root level="WARN">
     <appender-ref ref="ASYNCFILE" />

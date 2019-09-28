@@ -8,21 +8,21 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.mapping.FetchType;
 import v1.model.entity.Model;
 
 import java.util.List;
 
 public interface CarDataMapper {
 
-    @Select({"select a.id, a.year_prod, a.cost, b.title, b.year_prod_start, b.year_prod_end from car a left join model b on a.model_id=b.id"})
+    @Select({"select id, year_prod, cost, model_id from car"})
     @Results(value = {
-            @Result(property = "id", column = "id"),
+            @Result(property = "id", column = "id", id = true),
             @Result(property = "yearProd", column = "year_prod"),
+            @Result(property = "brand", column = "model_id", javaType = Brand.class,
+                    one = @One(select = "v1.car.entity.BrandDataMapper.getByModelId", fetchType = FetchType.EAGER)),
             @Result(property = "model", column = "model_id", javaType = Model.class,
-                    one = @One(select = "v1.model.entity.ModelDataMapper.get")),
-//            @Result(property = "model.title", column = "title"),
-//            @Result(property = "model.yearProdStart", column = "year_prod_s tart"),
-//            @Result(property = "model.yearProdEnd", column = "year_prod_end"),
+                    one = @One(select = "v1.model.entity.ModelDataMapper.get", fetchType = FetchType.EAGER)),
             @Result(property = "cost", column = "cost")
     })
     List<CarExt> list();
