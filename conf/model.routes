@@ -1,1 +1,2 @@
 POST   /                     v1.model.ModelController.create(request:Request)
+GET   /:id                   v1.model.ModelController.get(request:Request, id)

@@ -176,6 +176,61 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "model: create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Granta\",\n\t\"year_prod_start\": \"2009\",\n\t\"year_prod_end\": \"2013\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/model",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"model"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "model: get item by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/v1/model/3",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"model",
+						"3"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

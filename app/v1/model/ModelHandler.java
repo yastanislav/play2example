@@ -1,11 +1,13 @@
 package v1.model;
 
 import play.libs.concurrent.HttpExecutionContext;
+import play.mvc.Http;
 import v1.model.entity.Model;
 import v1.model.model.CreateModelRequest;
 import v1.model.model.CreateModelResponse;
 
 import javax.inject.Inject;
+import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 
 import static v1.CommonResponse.FAIL;
@@ -31,5 +33,10 @@ public class ModelHandler {
                     String status = (outputModel.getId() != null) ? SUCCESS : FAIL;
                     return new CreateModelResponse(outputModel.getId(), status);
                 }, ec.current());
+    }
+
+    public CompletionStage<Optional<Model>> get(Http.Request request, String id) {
+        return repository.get(Long.parseLong(id)).thenApplyAsync(
+                data -> data);
     }
 }
