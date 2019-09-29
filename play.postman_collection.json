@@ -231,6 +231,41 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "brand: create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"BMW\",\n\t\"country\": \"Германия\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/brand",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"brand"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

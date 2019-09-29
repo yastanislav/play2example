@@ -1,5 +1,6 @@
 package v1.car.entity;
 
+import v1.brand.entity.Brand;
 import v1.model.entity.Model;
 
 public class CarExt {

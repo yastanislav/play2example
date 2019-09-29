@@ -1,15 +1,12 @@
-package v1.car.entity;
+package v1.brand.entity;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.List;
-
 public interface BrandDataMapper {
-
-    @Select("select id, name, country from model where title='#{name}'")
-    List<Car> findByName(String name);
 
     @Select({"select b.id, b.name, b.country from brand b join model m on b.id=m.brand_id where m.id=#{id}"})
     @Results(value = {
@@ -18,4 +15,8 @@ public interface BrandDataMapper {
             @Result(property = "country", column = "country")
     })
     Brand getByModelId(Long id);
+
+    @Insert("insert into brand(name, country) values (#{name},#{country})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void create(Brand brand);
 }

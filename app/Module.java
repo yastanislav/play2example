@@ -4,6 +4,8 @@ import com.codahale.metrics.Slf4jReporter;
 import com.google.inject.AbstractModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import v1.brand.BrandRepository;
+import v1.brand.BrandRepositoryImpl;
 import v1.car.CarRepository;
 import v1.car.CarRepositoryImpl;
 import v1.model.ModelRepository;
@@ -32,6 +34,7 @@ public class Module extends AbstractModule {
         bind(PostRepository.class).to(JPAPostRepository.class).asEagerSingleton();
         bind(CarRepository.class).to(CarRepositoryImpl.class).asEagerSingleton();
         bind(ModelRepository.class).to(ModelRepositoryImpl.class).asEagerSingleton();
+        bind(BrandRepository.class).to(BrandRepositoryImpl.class).asEagerSingleton();
     }
 }
 

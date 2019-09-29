@@ -1,10 +1,17 @@
-package v1.car.entity;
+package v1.brand.entity;
+
+import v1.brand.model.CreateBrandRequest;
 
 public class Brand {
 
     private Long id;
     private String name;
     private String country;
+
+    public Brand(CreateBrandRequest request) {
+        setName(request.getName());
+        setCountry(request.getCountry());
+    }
 
     public Long getId() {
         return id;
