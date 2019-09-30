@@ -46,7 +46,11 @@ public class CarRepositoryImpl implements CarRepository {
         return null;
     }
 
-    public CompletionStage<Optional<String>> update(Long id, Car car) {
-        return null;
+    public CompletionStage<Optional<Integer>> update(Car car) {
+        System.out.println("CarRepositoryImpl.update " + car);
+        SqlSession s = MyBatisUtil.getSqlSessionFactory().openSession(true);
+        CarDataMapper mapper = s.getMapper(CarDataMapper.class);
+        int rowNumber = mapper.update(car);
+        return supplyAsync(() -> Optional.of(rowNumber));
     }
 }

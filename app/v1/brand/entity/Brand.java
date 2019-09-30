@@ -8,6 +8,9 @@ public class Brand {
     private String name;
     private String country;
 
+    public Brand() {
+    }
+
     public Brand(CreateBrandRequest request) {
         setName(request.getName());
         setCountry(request.getCountry());

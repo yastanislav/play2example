@@ -21,20 +21,20 @@ public interface CarDataMapper {
             @Result(property = "id", column = "id", id = true),
             @Result(property = "yearProd", column = "year_prod"),
             @Result(property = "brand", column = "model_id", javaType = Brand.class,
-                    one = @One(select = "v1.car.entity.BrandDataMapper.getByModelId", fetchType = FetchType.EAGER)),
+                    one = @One(select = "v1.brand.entity.BrandDataMapper.getByModelId", fetchType = FetchType.EAGER)),
             @Result(property = "model", column = "model_id", javaType = Model.class,
                     one = @One(select = "v1.model.entity.ModelDataMapper.get", fetchType = FetchType.EAGER)),
             @Result(property = "cost", column = "cost")
     })
     List<CarExt> list();
 
-    @Insert("insert into car(model_id, brand_id, year_prod, cost) values (#{modelId},#{brandId},#{yearProd},#{cost})")
+    @Insert("insert into car(model_id, year_prod, cost) values (#{modelId},#{yearProd},#{cost})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void create(Car car);
 
     @Delete("delete from car where id=#{id}")
-    void delete(Long id);
+    int delete(Long id);
 
-    @Update("update car set model_id=#{modelId}, brand_id=#{brandId}, year_prod = #{yearProd}, cost=#{cost} where id=#{id}")
-    void update(Long id, Long modelId, Long brandId, String yearProd, String cost);
+    @Update("update car set model_id=#{modelId}, year_prod = #{yearProd}, cost=#{cost} where id=#{id}")
+    int update(Car car);
 }

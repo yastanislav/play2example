@@ -9,6 +9,7 @@ import play.mvc.Result;
 import v1.car.entity.CarExt;
 import v1.car.model.CreateCarRequest;
 import v1.car.model.ListCarResponse;
+import v1.car.model.UpdateCarRequest;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,12 +36,21 @@ public class CarController extends Controller {
     }
 
     public CompletionStage<Result> list(Http.Request request) {
-        System.out.println("CarController.list");
+        System.out.println("*** CarController.list");
         return handler.list().thenApplyAsync(
                 streamCarList -> {
                     final List<CarExt> carList = streamCarList.collect(Collectors.toList());
                     ListCarResponse lcr = new ListCarResponse(carList);
                     return ok(Json.toJson(lcr));
                 }, ec.current());
+    }
+
+    public CompletionStage<Result> update(Http.Request request, String id) {
+        System.out.println("*** CarController.update");
+        JsonNode json = request.body().asJson();
+        UpdateCarRequest updateCarRequest = Json.fromJson(json, UpdateCarRequest.class); // маппинг входящего json на java-класс PostResources
+        return handler.update(id, updateCarRequest).thenApplyAsync(
+                response -> ok(Json.toJson(response))
+                , ec.current());
     }
 }

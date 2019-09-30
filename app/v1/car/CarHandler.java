@@ -5,6 +5,8 @@ import v1.car.entity.Car;
 import v1.car.entity.CarExt;
 import v1.car.model.CreateCarRequest;
 import v1.car.model.CreateCarResponse;
+import v1.car.model.UpdateCarRequest;
+import v1.car.model.UpdateCarResponse;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
@@ -26,12 +28,12 @@ public class CarHandler {
 
     public CompletionStage<CreateCarResponse> create(CreateCarRequest createCarRequest) {
         System.out.println("CarHandler.create");
-        Car inputCar = new Car(createCarRequest);
-        return repository.create(inputCar).thenApplyAsync(
-                outputCar -> {
-                    System.out.println("outputCar=" + outputCar);
-                    String status = (outputCar.getId() != null) ? SUCCESS : FAIL;
-                    return new CreateCarResponse(outputCar.getId(), status);
+        Car input = new Car(createCarRequest);
+        return repository.create(input).thenApplyAsync(
+                output -> {
+                    System.out.println("outputCar=" + output);
+                    String status = (output.getId() != null) ? SUCCESS : FAIL;
+                    return new CreateCarResponse(output.getId(), status);
                 }, ec.current());
     }
 
@@ -42,6 +44,17 @@ public class CarHandler {
                     if (car == null) System.out.println("Car equals null");
                     return car;
                 }), ec.current());
+    }
+
+    public CompletionStage<UpdateCarResponse> update(String id, UpdateCarRequest request) {
+        final Car input = new Car(request);
+        input.setId(Long.parseLong(id));
+        return repository.update(input).thenApplyAsync(
+                output -> {
+                    System.out.println("outputCar=" + output);
+                    String status = (output.orElse(0) == 1) ? SUCCESS : FAIL;
+                    return new UpdateCarResponse(status);
+                }, ec.current());
     }
 
 }

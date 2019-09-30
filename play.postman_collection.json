@@ -136,13 +136,19 @@
 				"header": [
 					{
 						"key": "Content-Type",
+						"name": "Content-Type",
 						"value": "application/json",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"brand_id\": 1,\n\t\"model_id\": 1,\n\t\"year_prod\": 1998,\n\t\"cost\": \"200000\"\n}"
+					"raw": "{\n\t\"model_id\": 3,\n\t\"year_prod\": 2015,\n\t\"cost\": \"530000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "localhost:9000/v1/cars",
@@ -262,6 +268,42 @@
 					"path": [
 						"v1",
 						"brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars: update item",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"model_id\": 3,\n\t\"year_prod\": 2011,\n\t\"cost\": \"320000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/cars/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"cars",
+						"2"
 					]
 				}
 			},

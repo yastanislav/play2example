@@ -1,6 +1,16 @@
 package v1.car.model;
 
-public class CreateCarRequest extends CommonCarRequest {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class CommonCarRequest {
+
+    @JsonProperty("model_id")
+    protected Long modelId;
+
+    @JsonProperty("year_prod")
+    protected Integer yearProd;
+
+    protected String cost;
 
     public Long getModelId() {
         return modelId;

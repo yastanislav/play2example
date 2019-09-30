@@ -15,5 +15,5 @@ public interface CarRepository {
 
     CompletionStage<Optional<Car>> get(Long id);
 
-    CompletionStage<Optional<String>> update(Long id, Car car);
+    CompletionStage<Optional<Integer>> update(Car car);
 }
