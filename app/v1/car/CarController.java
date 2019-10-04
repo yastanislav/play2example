@@ -1,6 +1,8 @@
 package v1.car;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import play.libs.Json;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
@@ -8,6 +10,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import v1.car.entity.CarExt;
 import v1.car.model.CreateCarRequest;
+import v1.car.model.CreateCarResponse;
 import v1.car.model.ListCarResponse;
 import v1.car.model.UpdateCarRequest;
 
@@ -16,6 +19,7 @@ import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
+@Api(value = "Car Controller", produces = "application/json")
 public class CarController extends Controller {
 
     private HttpExecutionContext ec;
@@ -27,6 +31,7 @@ public class CarController extends Controller {
         this.handler = handler;
     }
 
+    @ApiOperation(value = "Create car", notes = "Create record for a car.", response = CreateCarResponse.class)
     public CompletionStage<Result> create(Http.Request request) {
         System.out.println("*** CarController.create");
         JsonNode json = request.body().asJson();

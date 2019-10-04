@@ -308,6 +308,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get swagger json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/docs/swagger.json",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"docs",
+						"swagger.json"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

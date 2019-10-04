@@ -3,7 +3,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "play2example",
     version := "2.7.x",
-    scalaVersion := "2.13.0",
+    scalaVersion := "2.12.0",
     libraryDependencies ++= Seq(
       evolutions,
       jdbc,
@@ -16,6 +16,9 @@ lazy val root = (project in file("."))
       "net.jodah" % "failsafe" % "1.0.5",
       "org.mybatis" % "mybatis" % "3.5.2",
       "org.mybatis" % "mybatis-guice" % "3.3",
+      "io.swagger.core.v3" % "swagger-core" % "2.0.9",
+      "io.swagger.core.v3" % "swagger-annotations" % "2.0.9",
+      "io.swagger" %% "swagger-play2" % "1.7.1"
     ),
     PlayKeys.externalizeResources := false,
     testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a", "-v")),
